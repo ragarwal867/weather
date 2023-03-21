@@ -22,6 +22,12 @@ public class WeatherServiceImpl implements WeatherService {
     @Value("${client.secret}")
     private String clientSecret;
 
+    @Value("${wettercom.host}")
+    private static String rapidApiHost;
+
+    @Value("${wettercom.key}")
+    private static String rapidApiKey;
+
     @Override
     public String getCliendId() {
         return cliendId;
@@ -55,7 +61,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     private static HttpHeaders createWettercomHeaders() {
         HttpHeaders headers = new HttpHeaders();
-        headers.set("x-rapidapi-host", "forecast9.p.rapidapi.com");
+        headers.set("x-rapidapi-host", rapidApiHost);
         headers.set("x-rapidapi-key", "ed9cf8174fmshf7a2994357ad698p140ee4jsnbb8409709b73");
         return headers;
     }
